@@ -29,9 +29,13 @@ class CreateTeachersTable extends Migration
             $table->date('register_date');
             $table->date('date_graduated');
             $table->string('school_graduated');
-            $table->string('username');
+            $table->string('username')->unique();
             $table->string('password');
             $table->tinyInteger('age');
+            $table->tinyInteger('section_id')->nullable();
+            $table->tinyInteger('handle_classes')->nullable();
+            $table->tinyInteger('type_id')->nullable();
+            $table->string('is_teacher')->default(false);
             $table->timestamps();
         });
     }

@@ -27,6 +27,9 @@ $factory->define(Teacher::class, function (Faker $faker) {
         'username' => $faker->userName,
         'password' =>$faker->password,
         'age' => $faker->numberBetween(21,50),
+        'section_id' => $faker->numberBetween(1,12),
+        'handle_classes' => 0,
+        'type_id'=> 2,
         'created_at' => $faker->date($format = 'Y-m-d', $max = 'now'),
         'updated_at' => $faker->date($format = 'Y-m-d', $max = 'now'),
 

@@ -9,40 +9,54 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="table-data__tool">
-                                <div class="table-data__tool-left">
-                                    <div class="rs-select2--light rs-select2--md">
-                                        <select name="gradelevel" id="gradelevel" class="myselect">
-                                            @foreach($yearlevel as $yearlevels)
-                                                <option value="{{$yearlevels->id}}"{{old('gradelevel') == $yearlevels->id ? 'selected' : ''}} >{{$yearlevels->yearlevel}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <button type="submit" class="au-btn-filter" id="filter">
-                                        <i class="zmdi zmdi-filter-list"></i>filters
-                                    </button>
+                                <div class="table-data__tool-right">
+                                    <a style="margin-top: 25px;" href="{{route('admin.register_student')}}"
+                                        class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                        <i class="zmdi zmdi-plus"></i>add class
+                                    </a>
                                 </div>
                             </div>
-                            <div class="page-content--bgf7">
-                                <section class="statistic statistic2">
-                                    <div class="container">
-                                        <div class="row" id="classes">
-                                            @foreach($section as $sections)
-                                            <div class="col-md-6 col-lg-2">
-                                                <div class="statistic__item statistic__item text-center"
-                                                    style="background-color:{{$sections->color}}">
-                                                    <h3 class="number" style="color:white;">
-                                                        <small>{{$sections->yearlevel}}</small>
-                                                    </h3>
-                                                    <span class="desc">{{$sections->section_name}}</span>
-                                                    <br>
-                                                    <a href="{{route('admin.assign_teacher',$sections->id)}}"
-                                                        class="btn btn-secondary btn-sm">Enter</a>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-12">
+
+                            <div class="table-responsive">
+                                <table class="table" id="class">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">Id</th>
+                                            <th class="text-center">Name</th>
+                                            <th class="text-center">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($class as $classes)
+                                        <tr>
+                                            <td class="text-center">{{$classes->id}}</td>
+                                            <td class="text-center">{{$classes->class_name}}
+                                            </td>
+                                            <td class="text-center">
+                                                <div class="table-data-feature " style="text-align:center">
+                                                    <a href="" class="item" data-toggle="modal" data-placement="top"
+                                                        title="Edit" data-target="#editstud">
+                                                        <i class="zmdi zmdi-edit"></i>
+                                                    </a>
+                                                    <button class="item" title="Delete" data-toggle="modal"
+                                                        data-target="#deleteModal">
+                                                        <i class="zmdi zmdi-delete"></i>
+                                                    </button>
+                                                    <a href="{{route('admin.view_section',$classes->id)}}" class="item" data-toggle="tooltip" data-placement="top"
+                                                        title="View Section">
+                                                        <i class="zmdi zmdi-view-list"></i>
+                                                    </a>
                                                 </div>
-                                            </div>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                </section>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -51,3 +65,4 @@
         </div>
     </div>
 </div>
+@endsection
